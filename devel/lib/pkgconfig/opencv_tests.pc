@@ -1,0 +1,8 @@
+prefix=/home/ivica/catkin_ws/devel
+
+Name: opencv_tests
+Description: Description of opencv_tests
+Version: 1.12.7
+Cflags: 
+Libs: -L/home/ivica/catkin_ws/devel/lib 
+Requires: 

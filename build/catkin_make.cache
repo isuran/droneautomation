@@ -1,0 +1,2 @@
+Guidance-SDK-ROS-master:Onboard-SDK-ROS-3.6/dji_sdk:Onboard-SDK-ROS-3.6/dji_sdk_demo:vision_opencv-kinetic/cv_bridge:vision_opencv-kinetic/image_geometry:vision_opencv-kinetic/opencv_tests:vision_opencv-kinetic/vision_opencv
+-DCATKIN_DEVEL_PREFIX=/home/ivica/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ivica/catkin_ws/install -G Unix Makefiles

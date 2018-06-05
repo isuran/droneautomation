@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/dji_sdk_generate_messages_lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MobileData.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/Waypoint.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypointAction.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionHotpointTask.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypoint.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypointTask.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/WaypointList.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/Gimbal.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MFIOConfig.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionWpGetSpeed.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MFIOSetValue.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/SDKControlAuthority.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionWpGetInfo.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionWpUpload.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionWpAction.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/SendMobileData.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/DroneArmControl.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpAction.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/CameraAction.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/StereoDepthSubscription.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/Activation.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/QueryDroneVersion.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/StereoVGASubscription.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/SetupCameraStream.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpUpdateYawRate.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionStatus.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpUpdateRadius.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/DroneTaskControl.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/SetLocalPosRef.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpUpload.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/SetHardSync.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionWpSetSpeed.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpResetYaw.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/Stereo240pSubscription.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/srv/MissionHpGetInfo.lisp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang )
+  include(CMakeFiles/dji_sdk_generate_messages_lisp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
