@@ -36,6 +36,7 @@ ros::Subscriber ultrasonic_sub;
 ros::Subscriber position_sub;
 
 ros::Publisher distance_landing;
+ros::Subscriber start_landing;
 
 // Matching
 
@@ -67,11 +68,26 @@ using namespace cv;
 cv::Mat imgCameraLeft;
 cv::Mat imgCameraRight;
 
+std_msgs::Float32MultiArray array;
+
 double *landingXY = (double *) malloc(3*sizeof(double)); // saved home point
 
 float start = 0;
 
-void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& array);
+void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& activation)
+{
+
+	int i = 0;
+	// print all the remaining numbers
+	for(std::vector<float>::const_iterator it = activation->data.begin(); it != activation->data.end(); ++it)
+	{
+		start = *it;
+		i++;
+		ROS_INFO("Guidance OFF/ON %f ....", start);
+	}
+
+	return;
+}
 
 /* left greyscale image */
 void left_image_callback(const sensor_msgs::ImageConstPtr& left_img)
@@ -162,12 +178,11 @@ void position_callback(const geometry_msgs::Vector3Stamped& g_pos)
 
 int main(int argc, char** argv)
 {
-    ros::Duration(15.0).sleep();
 
     ros::init(argc, argv, "GuidanceNodeTest");
     ros::NodeHandle my_node;
 
-    ros::Publisher pub = my_node.advertise<std_msgs::Float32MultiArray>("array", 100);
+    ros::Duration(15.0).sleep();
 
     left_image_sub        = my_node.subscribe("/guidance/left_image",  10, left_image_callback);
     right_image_sub       = my_node.subscribe("/guidance/right_image", 10, right_image_callback);
@@ -175,13 +190,15 @@ int main(int argc, char** argv)
     imu_sub               = my_node.subscribe("/guidance/imu", 1, imu_callback);
     velocity_sub          = my_node.subscribe("/guidance/velocity", 1, velocity_callback);
     obstacle_distance_sub = my_node.subscribe("/guidance/obstacle_distance", 1, obstacle_distance_callback);
-    ultrasonic_sub = my_node.subscribe("/guidance/ultrasonic", 1, ultrasonic_callback);
-    position_sub = my_node.subscribe("/guidance/position", 1, position_callback);
+    ultrasonic_sub 	  = my_node.subscribe("/guidance/ultrasonic", 1, ultrasonic_callback);
+    position_sub 	  = my_node.subscribe("/guidance/position", 1, position_callback);
 
     Mat imgPattern = imread("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/pattern0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-    cv::imshow("pattern image", imgPattern);
+    //cv::imshow("pattern image", imgPattern);
 
-    ros::Subscriber sub3 = my_node.subscribe("/dji_sdk/activation", 100, arrayCallback);
+    start_landing 	  = my_node.subscribe("/dji_sdk_demo/activation", 1, arrayCallback);	
+    distance_landing 	  = my_node.advertise<std_msgs::Float32MultiArray>("array", 1);
+
 
     ros::spinOnce();
 
@@ -216,6 +233,12 @@ int main(int argc, char** argv)
 	//imshow("Keypoints 0", img_keypointsPattern );
 
     while (ros::ok()) {
+
+    array.data.clear();
+	
+    array.data.push_back(0);
+    array.data.push_back(0);
+    array.data.push_back(0);
 
     if(start == 1) {
 
@@ -430,8 +453,6 @@ int main(int argc, char** argv)
 		ROS_INFO("##### Landing %f ....", landingXY[0]);
 		ROS_INFO("##### Landing %f ....", landingXY[1]);
 
-
-		std_msgs::Float32MultiArray array;
 		//Clear array
 		array.data.clear();
 	
@@ -440,11 +461,14 @@ int main(int argc, char** argv)
 		array.data.push_back(1);
 	
 		//Publish array
-		pub.publish(array);
 
+		ros::Duration(5.0).sleep();
+		start = 0;
 		}
 
-		start = 0;
+	distance_landing.publish(array);
+
+		
 	//else
 		//{
 		//cvError(0,"MatchFinder","Not enough keypoints",__FILE__,__LINE__);
@@ -452,24 +476,14 @@ int main(int argc, char** argv)
 	
 	}
     
-       	ros::spinOnce();
+    ros::spinOnce();
+       	
     }
 
+    
     return 0;
 }
 
 
-void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& activation)
-{
 
-	int i = 0;
-	// print all the remaining numbers
-	for(std::vector<float>::const_iterator it = activation->data.begin(); it != activation->data.end(); ++it)
-	{
-		start = *it;
-		i++;
-	}
-
-	return;
-}
 

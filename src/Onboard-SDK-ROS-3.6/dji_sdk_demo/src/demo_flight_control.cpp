@@ -86,6 +86,8 @@ const float deg2rad = C_PI/180.0;
 const float rad2deg = 180.0/C_PI;
 const int numPoints = 5; // number of way points +1
 
+float startLanding = 0;
+
 // Reset counters that govern the moving of the drone
 
 int reset1 = 0; // reset first time going back 
@@ -114,7 +116,8 @@ ros::ServiceClient query_version_service;
 ros::Publisher ctrlPosYawPub;
 ros::Publisher ctrlVelYawRatePub;
 
-ros::Publisher pub;
+ros::Publisher activationPublisher;
+ros::Subscriber landingData;
 
 // global variables for subscribed topics
 uint8_t flight_status = 255;
@@ -122,6 +125,8 @@ uint8_t display_mode  = 255;
 sensor_msgs::NavSatFix current_gps;
 geometry_msgs::Quaternion current_atti;
 sensor_msgs::BatteryState current_battery;
+
+std_msgs::Float32MultiArray activation;
 
 Mission patrol_mission;
 
@@ -150,10 +155,12 @@ void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& array)
 
 int main(int argc, char** argv)
 {
-  ros::Duration(10.0).sleep();
+  
    
   ros::init(argc, argv, "demo_flight_control_node");
   ros::NodeHandle nh;
+
+  ros::Duration(10.0).sleep();
 
   // Subscribe to messages from dji_sdk_node
   ros::Subscriber attitudeSub = nh.subscribe("dji_sdk/attitude", 10, &attitude_callback);
@@ -162,14 +169,11 @@ int main(int argc, char** argv)
   ros::Subscriber displayModeSub = nh.subscribe("dji_sdk/display_mode", 10, &display_mode_callback);
   //ros::Subscriber batteryState = nh.subscribe("dji_sdk/battery_state", 10, &battery_state_callback);
 
-  //ros::init(argc, argv, "GuidanceNodeTest"); ??????????????????????????????????
-  ros::NodeHandle my_node;
+  obstacle_distance_sub = nh.subscribe("/guidance/obstacle_distance", 10, obstacle_distance_callback);
 
-  obstacle_distance_sub = my_node.subscribe("/guidance/obstacle_distance", 1, obstacle_distance_callback);
+  activationPublisher = nh.advertise<std_msgs::Float32MultiArray>("activation", 1);
 
-  pub = my_node.advertise<std_msgs::Float32MultiArray>("activation", 100);
-
-  ros::Subscriber sub3 = my_node.subscribe("/guidance/array", 100, arrayCallback);
+  landingData = nh.subscribe("/guidance/array", 1, arrayCallback);
 
   // Publish the control signal
   ctrlPosYawPub = nh.advertise<sensor_msgs::Joy>("/dji_sdk/flight_control_setpoint_ENUposition_yaw", 10);
@@ -253,6 +257,12 @@ int main(int argc, char** argv)
     patrol_mission.setTarget(inputData[0],inputData[1], waypoinMissionData[2] = 40, inputData[2]);
     patrol_mission.state = 1;
     ROS_INFO("##### Start route %d ....", patrol_mission.state);
+
+    activation.data.clear();
+    activation.data.push_back(startLanding);
+
+    //Publish array
+    activationPublisher.publish(activation);
  
 
   ros::spin();
@@ -322,7 +332,7 @@ void Mission::step()
   double yawInRad          = toEulerAngle(current_atti).z;
 
   info_counter++;
-  if(info_counter > 15) // To print data
+  if(info_counter > 50) // To print data
 	  {
 	    ROS_INFO("-----x=%f, y=%f, z=%f, yaw=%f ...", localOffset.x,localOffset.y, localOffset.z,yawInRad);
 	    ROS_INFO("+++++dx=%f, dy=%f, dz=%f, dyaw=%f ...", xOffsetRemaining,yOffsetRemaining, zOffsetRemaining,yawInRad - yawDesiredRad);
@@ -357,7 +367,7 @@ void Mission::step()
     
   
 
-if(info_counter > 25)
+if(info_counter > 50)
   {
     info_counter = 0;
     ROS_INFO("zCmd=%f, altitude=%f, z=%f, dz=%f", zCmd, current_gps.altitude, current_gps.altitude-homePoint[2], zOffsetRemaining);
@@ -658,7 +668,8 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		if(!patrol_mission.finished)
 		{
 			patrol_mission.step();
-			ROS_INFO("M100 going home, is close %d ", reset3); 
+			//ROS_INFO("M100 going home, is close %d ", reset3); 
+			startLanding = 0;
 		}
 
 		else if(reset3 == 0)
@@ -684,16 +695,9 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		else
 		{
 
-			// Here goes signal to start Guidance Test
+			ROS_INFO("Activate GuidanceNodeTest");
 
-			std_msgs::Float32MultiArray activation;
-			//Clear array
-			activation.data.clear();
-
-			activation.data.push_back(1);
-
-			//Publish array
-			pub.publish(activation);
+			startLanding = 1;
 	
 			if(landingXY[2] == 1) {
 
@@ -713,13 +717,14 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			}
 			else {
 			ros::Duration(2.0).sleep();
+			ROS_INFO("Waiting for data");
 			}
 			
 		}
 	
 	} 
-	
   }
+	
 }
 
 
