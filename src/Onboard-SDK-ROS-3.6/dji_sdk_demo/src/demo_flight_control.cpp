@@ -15,6 +15,8 @@
 #include "dji_sdk/dji_sdk.h"
 #include "dji_sdk/dji_sdk_node.h"
 
+#include <sensor_msgs/LaserScan.h> //obstacle distance && ultrasonic
+
 // Things fot making the BatterySensor Work, for now doesn't
 
 #include <sensor_msgs/BatteryState.h>
@@ -37,7 +39,6 @@
 #include <cv.h>
 #include <stdio.h>
 
-#include <iostream>
 #include <vector>
 #include <cmath>
 
@@ -67,6 +68,8 @@ ros::Subscriber obstacle_distance_sub;
 ros::Subscriber ultrasonic_sub;
 ros::Subscriber position_sub;
 
+sensor_msgs::LaserScan g_oa;
+
 #include "std_msgs/MultiArrayLayout.h"
 #include "std_msgs/MultiArrayDimension.h"
 #include "std_msgs/Float32MultiArray.h"
@@ -85,6 +88,8 @@ using namespace cv;
 const float deg2rad = C_PI/180.0;
 const float rad2deg = 180.0/C_PI;
 const int numPoints = 5; // number of way points +1
+
+int counterGuidance = 0;
 
 float startLanding = 0;
 
@@ -695,11 +700,41 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		else
 		{
 
+			if(counterGuidance == 0) {
+	
 			ROS_INFO("Activate GuidanceNodeTest");
 
-			startLanding = 1;
+			std::ofstream ofs;
+  			ofs.open ("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt", std::ofstream::out | std::ofstream::trunc);
+  			ofs << "1";
+  			ofs.close();
+
+			counterGuidance++;
+
+			}
+
+			ifstream file3("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt");
+ 			string lineData;
+  			int j;
+
+    			while(std::getline(file3,lineData)){
+    			std::istringstream iss2(lineData);
+    			float value;
+    			j = 0;
+    			while(iss2 >> value){
+        			landingXY[j] = value; 
+				j++;
+    				}
+			}
+
 	
 			if(landingXY[2] == 1) {
+
+			counterGuidance = 0;
+			
+			std::ofstream ofs2;
+  			ofs2.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
+  			ofs2.close();
 
 			landingXY[2] = 0;
 				
@@ -707,13 +742,21 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			patrol_mission.reset();
 		  	patrol_mission.start_gps_location = current_gps; 
 
-			patrol_mission.setTarget(landingXY[0], landingXY[1], 30-2.0*reset3, returnData[2]);
+			float decent;
+			if(g_oa.ranges[0] > 30) decent=3;
+			else if(g_oa.ranges[0] > 20) decent=2;
+			else if(g_oa.ranges[0] > 10) decent=1;
+			else if(g_oa.ranges[0] > 5) decent=0.5;
+			else decent=0.2;
+
+			patrol_mission.setTarget(-landingXY[0], -landingXY[1], 30-2.0*reset3, returnData[2]);
                         patrol_mission.state = numPoints+reset3;
  
 			ROS_INFO("##### Landing part %d ....", reset3);
 			ROS_INFO("##### Landing x = %f ....", landingXY[0]);
 			ROS_INFO("##### Landing y = %f ....", landingXY[1]);
 			reset3 = reset3 + 1;
+
 			}
 			else {
 			ros::Duration(2.0).sleep();

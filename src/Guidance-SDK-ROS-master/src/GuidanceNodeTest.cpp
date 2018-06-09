@@ -45,6 +45,7 @@ ros::Subscriber start_landing;
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 #include <cmath>
@@ -184,6 +185,10 @@ int main(int argc, char** argv)
 
     ros::Duration(15.0).sleep();
 
+    std::ofstream ofs;
+    ofs.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
+
     left_image_sub        = my_node.subscribe("/guidance/left_image",  10, left_image_callback);
     right_image_sub       = my_node.subscribe("/guidance/right_image", 10, right_image_callback);
     depth_image_sub       = my_node.subscribe("/guidance/depth_image", 10, depth_image_callback);
@@ -240,7 +245,12 @@ int main(int argc, char** argv)
     array.data.push_back(0);
     array.data.push_back(0);
 
-    if(start == 1) {
+    ifstream file1("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt");
+    int val;
+    file1 >> val;
+
+
+    if(val == 1) {
 
     // Compute keypoints and descriptor from the left camera input
 
@@ -319,7 +329,7 @@ int main(int argc, char** argv)
 	vector<cv::DMatch> good_matchesLeft;
 	for (int i = 0; i < matchesLeft.size(); ++i)
 		{
-	    		const float ratio = 50.0; // As in Lowe's paper; can be tuned
+	    		const float ratio = 5.0; // As in Lowe's paper; can be tuned
 	    		if (matchesLeft[i].distance < ratio*min_distLeft)
 	    		{
 				good_matchesLeft.push_back(matchesLeft[i]);
@@ -329,7 +339,7 @@ int main(int argc, char** argv)
 	vector<cv::DMatch> good_matchesRight;
 	for (int i = 0; i < matchesRight.size(); ++i)
 		{
-	    		const float ratio = 50.0; // As in Lowe's paper; can be tuned
+	    		const float ratio = 5.0; // As in Lowe's paper; can be tuned
 	    		if (matchesRight[i].distance < ratio*min_distRight)
 	   		{
 				good_matchesRight.push_back(matchesRight[i]);
@@ -389,10 +399,10 @@ int main(int argc, char** argv)
 
 		// Draw lines between the corners (the mapped object in the scene - image_2 )
 	
-	  	line( img_matchesLeft, camera_cornersLeft[0] + Point2f( imgPattern.cols, 0), camera_cornersLeft[1] + Point2f( imgPattern.cols, 0), Scalar(0, 255, 0), 4 );
-	  	line( img_matchesLeft, camera_cornersLeft[1] + Point2f( imgPattern.cols, 0), camera_cornersLeft[2] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
-	  	line( img_matchesLeft, camera_cornersLeft[2] + Point2f( imgPattern.cols, 0), camera_cornersLeft[3] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
-	  	line( img_matchesLeft, camera_cornersLeft[3] + Point2f( imgPattern.cols, 0), camera_cornersLeft[0] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesLeft, camera_cornersLeft[0] + Point2f( imgPattern.cols, 0), camera_cornersLeft[1] + Point2f( imgPattern.cols, 0), Scalar(0, 255, 0), 4 );
+	  	//line( img_matchesLeft, camera_cornersLeft[1] + Point2f( imgPattern.cols, 0), camera_cornersLeft[2] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesLeft, camera_cornersLeft[2] + Point2f( imgPattern.cols, 0), camera_cornersLeft[3] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesLeft, camera_cornersLeft[3] + Point2f( imgPattern.cols, 0), camera_cornersLeft[0] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
 
 		// Show detected matches
 
@@ -400,10 +410,10 @@ int main(int argc, char** argv)
 
 		// Draw lines between the corners (the mapped object in the scene - image_2 )
 
-	  	line( img_matchesRight, camera_cornersRight[0] + Point2f( imgPattern.cols, 0), camera_cornersRight[1] + Point2f( imgPattern.cols, 0), Scalar(0, 255, 0), 4 );
-	  	line( img_matchesRight, camera_cornersRight[1] + Point2f( imgPattern.cols, 0), camera_cornersRight[2] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
-	  	line( img_matchesRight, camera_cornersRight[2] + Point2f( imgPattern.cols, 0), camera_cornersRight[3] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
-	  	line( img_matchesRight, camera_cornersRight[3] + Point2f( imgPattern.cols, 0), camera_cornersRight[0] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesRight, camera_cornersRight[0] + Point2f( imgPattern.cols, 0), camera_cornersRight[1] + Point2f( imgPattern.cols, 0), Scalar(0, 255, 0), 4 );
+	  	//line( img_matchesRight, camera_cornersRight[1] + Point2f( imgPattern.cols, 0), camera_cornersRight[2] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesRight, camera_cornersRight[2] + Point2f( imgPattern.cols, 0), camera_cornersRight[3] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
+	  	//line( img_matchesRight, camera_cornersRight[3] + Point2f( imgPattern.cols, 0), camera_cornersRight[0] + Point2f( imgPattern.cols, 0), Scalar( 0, 255, 0), 4 );
 
 		// Show detected matches
 	  	imshow( "Good Matches Right & Pattern detection", img_matchesRight );
@@ -444,7 +454,7 @@ int main(int argc, char** argv)
 
 		// Scaling factor
 			float KNOWN_DISTANCE = 0.45;
-			float KNOWN_PIXEL = 106.83;
+			float KNOWN_PIXEL = 4*106.83;
 
 		// Calculate the x and y distance of the drone from the target
 			landingXY[0] = (avgXLeft + avgXRight - (dim_x))/KNOWN_PIXEL;
@@ -462,8 +472,20 @@ int main(int argc, char** argv)
 	
 		//Publish array
 
-		ros::Duration(5.0).sleep();
+		
 		start = 0;
+
+		std::ofstream ofs;
+  		ofs.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
+  		ofs << landingXY[0] << " " << landingXY[1] << " " << "1.0 \n";
+  		ofs.close();
+
+		std::ofstream ofs2;
+    		ofs2.open ("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt", std::ofstream::out | std::ofstream::trunc);
+    		ofs2 << "0";
+    		ofs2.close();
+
+		ros::Duration(5.0).sleep();
 		}
 
 	distance_landing.publish(array);

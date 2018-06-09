@@ -1325,6 +1325,8 @@ dji_sdk/dji_sdk.h
 /home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/dji_sdk/dji_sdk.h
 dji_sdk/dji_sdk_node.h
 /home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/dji_sdk/dji_sdk_node.h
+sensor_msgs/LaserScan.h
+-
 sensor_msgs/BatteryState.h
 -
 tf/tf.h
@@ -1350,8 +1352,6 @@ opencv2/highgui/highgui.hpp
 cv.h
 -
 stdio.h
--
-iostream
 -
 vector
 -
