@@ -35,9 +35,6 @@ ros::Subscriber obstacle_distance_sub;
 ros::Subscriber ultrasonic_sub;
 ros::Subscriber position_sub;
 
-ros::Publisher distance_landing;
-ros::Subscriber start_landing;
-
 // Matching
 
 #include <opencv2/features2d.hpp>
@@ -72,23 +69,6 @@ cv::Mat imgCameraRight;
 std_msgs::Float32MultiArray array;
 
 double *landingXY = (double *) malloc(3*sizeof(double)); // saved home point
-
-float start = 0;
-
-void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& activation)
-{
-
-	int i = 0;
-	// print all the remaining numbers
-	for(std::vector<float>::const_iterator it = activation->data.begin(); it != activation->data.end(); ++it)
-	{
-		start = *it;
-		i++;
-		ROS_INFO("Guidance OFF/ON %f ....", start);
-	}
-
-	return;
-}
 
 /* left greyscale image */
 void left_image_callback(const sensor_msgs::ImageConstPtr& left_img)
@@ -159,6 +139,7 @@ void obstacle_distance_callback(const sensor_msgs::LaserScan& g_oa)
 {
     //printf( "frame_id: %s stamp: %d\n", g_oa.header.frame_id.c_str(), g_oa.header.stamp.sec );
     //printf( "obstacle distance: [%f %f %f %f %f]\n", g_oa.ranges[0], g_oa.ranges[1], g_oa.ranges[2], g_oa.ranges[3], g_oa.ranges[4] );
+    landingXY[2] = g_oa.ranges[0];
 }
 
 /* ultrasonic */
@@ -183,7 +164,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "GuidanceNodeTest");
     ros::NodeHandle my_node;
 
-    ros::Duration(15.0).sleep();
+    ros::Duration(20.0).sleep();
 
     std::ofstream ofs;
     ofs.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
@@ -199,15 +180,11 @@ int main(int argc, char** argv)
     position_sub 	  = my_node.subscribe("/guidance/position", 1, position_callback);
 
     Mat imgPattern = imread("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/pattern0.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-    //cv::imshow("pattern image", imgPattern);
-
-    start_landing 	  = my_node.subscribe("/dji_sdk_demo/activation", 1, arrayCallback);	
-    distance_landing 	  = my_node.advertise<std_msgs::Float32MultiArray>("array", 1);
-
+    cv::imshow("pattern image", imgPattern);
 
     ros::spinOnce();
 
-    int minMatches = 3;
+    int minMatches = 5;
 
     // Initiate ORB detector
 	Ptr<FeatureDetector> detector = ORB::create();
@@ -238,12 +215,6 @@ int main(int argc, char** argv)
 	//imshow("Keypoints 0", img_keypointsPattern );
 
     while (ros::ok()) {
-
-    array.data.clear();
-	
-    array.data.push_back(0);
-    array.data.push_back(0);
-    array.data.push_back(0);
 
     ifstream file1("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt");
     int val;
@@ -308,7 +279,7 @@ int main(int argc, char** argv)
 	std::vector< DMatch > matchesRight;
 	matcher.match( descriptorsPattern, descriptorsCameraRight, matchesRight );
 
-	if(matchesRight.size() < 1) cvError(0,"MatchFinder","No right matches",__FILE__,__LINE__);
+	//if(matchesRight.size() < 1) cvError(0,"MatchFinder","No right matches",__FILE__,__LINE__);
 
 	double max_distLeft = 0; double min_distLeft = 100;
 	double max_distRight = 0; double min_distRight = 100;
@@ -459,25 +430,15 @@ int main(int argc, char** argv)
 		// Calculate the x and y distance of the drone from the target
 			landingXY[0] = (avgXLeft + avgXRight - (dim_x))/KNOWN_PIXEL;
 			landingXY[1] = ((dim_y) - avgYLeft - avgYRight)/KNOWN_PIXEL;
+			
+		ROS_INFO("##### Landing x = %f ....", landingXY[0]);
+		ROS_INFO("##### Landing y = %f ....", landingXY[1]);
+		ROS_INFO("##### Landing h = %f ....", landingXY[2]);
 
-		ROS_INFO("##### Landing %f ....", landingXY[0]);
-		ROS_INFO("##### Landing %f ....", landingXY[1]);
-
-		//Clear array
-		array.data.clear();
-	
-		array.data.push_back(landingXY[0]);
-		array.data.push_back(landingXY[1]);
-		array.data.push_back(1);
-	
-		//Publish array
-
-		
-		start = 0;
 
 		std::ofstream ofs;
   		ofs.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
-  		ofs << landingXY[0] << " " << landingXY[1] << " " << "1.0 \n";
+  		ofs << landingXY[0] << " " << landingXY[1] << " " << landingXY[2] << "1.0 \n";
   		ofs.close();
 
 		std::ofstream ofs2;
@@ -485,10 +446,7 @@ int main(int argc, char** argv)
     		ofs2 << "0";
     		ofs2.close();
 
-		ros::Duration(5.0).sleep();
 		}
-
-	distance_landing.publish(array);
 
 		
 	//else

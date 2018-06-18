@@ -68,13 +68,9 @@ ros::Subscriber obstacle_distance_sub;
 ros::Subscriber ultrasonic_sub;
 ros::Subscriber position_sub;
 
-sensor_msgs::LaserScan g_oa;
-
 #include "std_msgs/MultiArrayLayout.h"
 #include "std_msgs/MultiArrayDimension.h"
 #include "std_msgs/Float32MultiArray.h"
-
-void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& array);
 
 using namespace cv_bridge;
 #define WIDTH 320
@@ -90,8 +86,6 @@ const float rad2deg = 180.0/C_PI;
 const int numPoints = 5; // number of way points +1
 
 int counterGuidance = 0;
-
-float startLanding = 0;
 
 // Reset counters that govern the moving of the drone
 
@@ -112,7 +106,7 @@ double *newCoordinateReturn = (double *) malloc(3*sizeof(double)); // to backtra
 double *homePoint = (double *) malloc(3*sizeof(double)); // saved home point
 
 // For Landing
-float *landingXY = (float *) malloc(3*sizeof(float)); // saved home point
+float *landingXY = (float *) malloc(4*sizeof(float)); // saved home point
 
 ros::ServiceClient sdk_ctrl_authority_service;
 ros::ServiceClient drone_task_service;
@@ -120,9 +114,6 @@ ros::ServiceClient query_version_service;
 
 ros::Publisher ctrlPosYawPub;
 ros::Publisher ctrlVelYawRatePub;
-
-ros::Publisher activationPublisher;
-ros::Subscriber landingData;
 
 // global variables for subscribed topics
 uint8_t flight_status = 255;
@@ -134,29 +125,6 @@ sensor_msgs::BatteryState current_battery;
 std_msgs::Float32MultiArray activation;
 
 Mission patrol_mission;
-
-
-/* obstacle distance */
-void obstacle_distance_callback(const sensor_msgs::LaserScan& g_oa)
-{
-    //printf( "frame_id: %s stamp: %d\n", g_oa.header.frame_id.c_str(), g_oa.header.stamp.sec );
-    //printf( "obstacle distance: [%f %f %f %f %f]\n", g_oa.ranges[0], g_oa.ranges[1], g_oa.ranges[2], g_oa.ranges[3], g_oa.ranges[4] );
-}
-
-void arrayCallback(const std_msgs::Float32MultiArray::ConstPtr& array)
-{
-
-	int i = 0;
-	// print all the remaining numbers
-	for(std::vector<float>::const_iterator it = array->data.begin(); it != array->data.end(); ++it)
-	{
-		landingXY[i] = *it;
-		i++;
-	}
-
-	return;
-}
-
 
 int main(int argc, char** argv)
 {
@@ -174,12 +142,6 @@ int main(int argc, char** argv)
   ros::Subscriber displayModeSub = nh.subscribe("dji_sdk/display_mode", 10, &display_mode_callback);
   //ros::Subscriber batteryState = nh.subscribe("dji_sdk/battery_state", 10, &battery_state_callback);
 
-  obstacle_distance_sub = nh.subscribe("/guidance/obstacle_distance", 10, obstacle_distance_callback);
-
-  activationPublisher = nh.advertise<std_msgs::Float32MultiArray>("activation", 1);
-
-  landingData = nh.subscribe("/guidance/array", 1, arrayCallback);
-
   // Publish the control signal
   ctrlPosYawPub = nh.advertise<sensor_msgs::Joy>("/dji_sdk/flight_control_setpoint_ENUposition_yaw", 10);
   ctrlVelYawRatePub = nh.advertise<sensor_msgs::Joy>("dji_sdk/flight_control_setpoint_generic", 10);
@@ -190,6 +152,11 @@ int main(int argc, char** argv)
   sdk_ctrl_authority_service = nh.serviceClient<dji_sdk::SDKControlAuthority> ("dji_sdk/sdk_control_authority");
   drone_task_service         = nh.serviceClient<dji_sdk::DroneTaskControl>("dji_sdk/drone_task_control");
   query_version_service      = nh.serviceClient<dji_sdk::QueryDroneVersion>("dji_sdk/query_drone_version");
+
+  std::ofstream ofs3;
+  ofs3.open ("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt", std::ofstream::out | std::ofstream::trunc);
+  ofs3 << "0";
+  ofs3.close();
 
   // Prints battery state, doesn't work 
 
@@ -262,12 +229,6 @@ int main(int argc, char** argv)
     patrol_mission.setTarget(inputData[0],inputData[1], waypoinMissionData[2] = 40, inputData[2]);
     patrol_mission.state = 1;
     ROS_INFO("##### Start route %d ....", patrol_mission.state);
-
-    activation.data.clear();
-    activation.data.push_back(startLanding);
-
-    //Publish array
-    activationPublisher.publish(activation);
  
 
   ros::spin();
@@ -674,7 +635,6 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		{
 			patrol_mission.step();
 			//ROS_INFO("M100 going home, is close %d ", reset3); 
-			startLanding = 0;
 		}
 
 		else if(reset3 == 0)
@@ -728,25 +688,31 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			}
 
 	
-			if(landingXY[2] == 1) {
+			if(landingXY[3] == 1) {
 
 			counterGuidance = 0;
+
+			std::ofstream ofs4;
+  			ofs4.open ("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt", std::ofstream::out | std::ofstream::trunc);
+  			ofs4 << "0";
+  			ofs4.close();
+
 			
 			std::ofstream ofs2;
   			ofs2.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
   			ofs2.close();
 
-			landingXY[2] = 0;
+			landingXY[3] = 0;
 				
 			ROS_INFO("M100  LANDING"); 		
 			patrol_mission.reset();
 		  	patrol_mission.start_gps_location = current_gps; 
 
 			float decent;
-			if(g_oa.ranges[0] > 30) decent=3;
-			else if(g_oa.ranges[0] > 20) decent=2;
-			else if(g_oa.ranges[0] > 10) decent=1;
-			else if(g_oa.ranges[0] > 5) decent=0.5;
+			if(landingXY[2] > 30) decent=3;
+			else if(landingXY[2] > 20) decent=2;
+			else if(landingXY[2] > 10) decent=1;
+			else if(landingXY[2] > 5) decent=0.5;
 			else decent=0.2;
 
 			patrol_mission.setTarget(-landingXY[0], -landingXY[1], 30-2.0*reset3, returnData[2]);
