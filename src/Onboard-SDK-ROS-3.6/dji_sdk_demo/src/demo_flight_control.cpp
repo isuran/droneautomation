@@ -86,6 +86,7 @@ const float rad2deg = 180.0/C_PI;
 const int numPoints = 5; // number of way points +1
 
 int counterGuidance = 0;
+int counterSearchPattern = 0;
 
 // Reset counters that govern the moving of the drone
 
@@ -133,7 +134,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "demo_flight_control_node");
   ros::NodeHandle nh;
 
-  ros::Duration(10.0).sleep();
+  ros::Duration(5.0).sleep();
 
   // Subscribe to messages from dji_sdk_node
   ros::Subscriber attitudeSub = nh.subscribe("dji_sdk/attitude", 10, &attitude_callback);
@@ -207,6 +208,7 @@ int main(int argc, char** argv)
     }
     i++;
 }
+  file.close();
 
   for(int k=0; k<numPoints; k++) {
 	// First point difference from home point express in xyz coordinates
@@ -497,13 +499,14 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 // Reads comands from file
 
     ifstream file2("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/komande.txt");
-    int val;
-    file2 >> val;
+    int val1;
+    file2 >> val1;
+    file2.close();
 
     start_time = ros::Time::now();
     // here enter read from file and than if options for stop, back, resume and go home
 	
-	if(val == 1 && patrol_mission.state < numPoints){ // To procede normaly with the mission val = 1
+	if(val1 == 1 && patrol_mission.state < numPoints){ // To procede normaly with the mission val = 1
 
 	    for(int j=1; j<numPoints; j++) {
 	    
@@ -527,7 +530,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 	    }
 	}
 
-	else if(val == 2 && patrol_mission.state < numPoints) { // To pause the mission
+	else if(val1 == 2 && patrol_mission.state < numPoints) { // To pause the mission
                   int j = patrol_mission.state;
 		  patrol_mission.reset();
 		  patrol_mission.start_gps_location = current_gps;
@@ -538,7 +541,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		  reset2 = 0;
 	}
 
-	else if(val == 3 && patrol_mission.state < numPoints) { // To retrace the mission
+	else if(val1 == 3 && patrol_mission.state < numPoints) { // To retrace the mission
 
 	    for(int j=0; j<numPoints; j++)    {
 
@@ -580,7 +583,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 	    }
 	}
 
-	else if(val == 4 && patrol_mission.state < numPoints) { // To resume the mission
+	else if(val1 == 4 && patrol_mission.state < numPoints) { // To resume the mission
 
 	     for(int j=1; j<numPoints; j++)    {
 
@@ -626,10 +629,13 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 	    }
 	}
 
-	else if(val == 5 || patrol_mission.state >= numPoints) { // To get closer to home point
+	else if(val1 == 5 || patrol_mission.state >= numPoints) { // To get closer to home point
 	
 		reset2 = 0;
 		reset1 = 0;
+
+		float height;	
+		if(reset3 == 0) height = 15; 
 
 		if(!patrol_mission.finished)
 		{
@@ -637,7 +643,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			//ROS_INFO("M100 going home, is close %d ", reset3); 
 		}
 
-		else if(reset3 == 0)
+		else if(reset3 >= 1)
 		{
 			patrol_mission.reset();
 		  	patrol_mission.start_gps_location = current_gps; 
@@ -648,12 +654,14 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 
 			ROS_INFO("Return to home distance %f, %f, %f", returnData[0], returnData[1], returnData[2]); 
 
-    			patrol_mission.setTarget(returnData[0], returnData[1], 30, returnData[2]);
+			height = height - 5*reset3; 
+
+    			patrol_mission.setTarget(returnData[0], returnData[1], height, returnData[2]);
                         patrol_mission.state = numPoints;
 
 		        ROS_INFO("##### Last root %d ....", patrol_mission.state);
 
-			reset3 = 1;
+			reset3 = reset3 + 1;
 	
 		}
 
@@ -686,6 +694,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 				j++;
     				}
 			}
+			file3.close();
 
 	
 			if(landingXY[3] == 1) {
@@ -697,7 +706,6 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
   			ofs4 << "0";
   			ofs4.close();
 
-			
 			std::ofstream ofs2;
   			ofs2.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
   			ofs2.close();
@@ -705,17 +713,19 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			landingXY[3] = 0;
 				
 			ROS_INFO("M100  LANDING"); 		
-			patrol_mission.reset();
-		  	patrol_mission.start_gps_location = current_gps; 
+			patrol_mission.reset();  	
+			patrol_mission.start_gps_location = current_gps; 
 
-			float decent;
+			float decent = 0;
 			if(landingXY[2] > 30) decent=3;
 			else if(landingXY[2] > 20) decent=2;
 			else if(landingXY[2] > 10) decent=1;
 			else if(landingXY[2] > 5) decent=0.5;
 			else decent=0.2;
 
-			patrol_mission.setTarget(-landingXY[0], -landingXY[1], 30-2.0*reset3, returnData[2]);
+			height =  height - decent;
+
+			patrol_mission.setTarget(-landingXY[0], -landingXY[1], height, returnData[2]);
                         patrol_mission.state = numPoints+reset3;
  
 			ROS_INFO("##### Landing part %d ....", reset3);
@@ -726,7 +736,96 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 			}
 			else {
 			ros::Duration(2.0).sleep();
+
+			ifstream file4("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/NoVisiblePatternLeft.txt");
+    			int val2 = 0;
+    			file4 >> val2;
+    			file4.close();
+
+			ifstream file5("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/NoVisiblePatternRight.txt");
+    			int val3 = 0;
+    			file5 >> val3;
+    			file5.close();
+
+			float dX,dY;
+
+			if(val2 == 1 && val3 == 1) {
+				if(counterSearchPattern % 16 == 0) {
+				dX = 0;
+				dY = 1;
+				}
+				else if(counterSearchPattern % 16 == 1) {
+				dX = 1;
+				dY = 0;
+				}
+				else if(counterSearchPattern % 16 == 2) {
+				dX = 0;
+				dY = -1;
+				}
+				else if(counterSearchPattern % 16 == 3) {
+				dX = -1;
+				dY = 0;	
+				}	
+				else if(counterSearchPattern % 16 == 4) {
+				dX = 0;
+				dY = -1;
+				}
+				else if(counterSearchPattern % 16 == 5) {
+				dX = -1;
+				dY = 0;
+				}
+				else if(counterSearchPattern % 16 == 6) {
+				dX = 0;
+				dY = 1;
+				}
+				else if(counterSearchPattern % 16 == 7) {
+				dX = 1;
+				dY = 0;	
+				}	
+				else if(counterSearchPattern % 16 == 8) {
+				dX = 0;
+				dY = 1;
+				}
+				else if(counterSearchPattern % 16 == 9) {
+				dX = -1;
+				dY = 0;
+				}
+				else if(counterSearchPattern % 16 == 10) {
+				dX = 0;
+				dY = -1;
+				}
+				else if(counterSearchPattern % 16 == 11) {
+				dX = 1;
+				dY = 0;	
+				}	
+				else if(counterSearchPattern % 16 == 12) {
+				dX = 0;
+				dY = -1;
+				}
+				else if(counterSearchPattern % 16 == 13) {
+				dX = 1;
+				dY = 0;
+				}
+				else if(counterSearchPattern % 16 == 14) {
+				dX = 0;
+				dY = 1;
+				}
+				else if(counterSearchPattern % 16 == 15) {
+				dX = -1;
+				dY = 0;	
+				}	
+
+			counterSearchPattern++;
+
+			patrol_mission.reset();  	
+			patrol_mission.start_gps_location = current_gps; 
+
+			patrol_mission.setTarget(dX, dY, height, returnData[2]);
+                        patrol_mission.state = numPoints+reset3;
+			}
+
 			ROS_INFO("Waiting for data");
+
 			}
 			
 		}

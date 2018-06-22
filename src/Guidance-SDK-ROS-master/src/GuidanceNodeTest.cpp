@@ -164,7 +164,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "GuidanceNodeTest");
     ros::NodeHandle my_node;
 
-    ros::Duration(20.0).sleep();
+    ros::Duration(10.0).sleep();
 
     std::ofstream ofs;
     ofs.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/LandingData.txt", std::ofstream::out | std::ofstream::trunc);
@@ -216,10 +216,12 @@ int main(int argc, char** argv)
 
     while (ros::ok()) {
 
+    ros::Duration(1.0).sleep();
+
     ifstream file1("/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/src/landingActivation.txt");
     int val;
     file1 >> val;
-
+    file1.close();
 
     if(val == 1) {
 
@@ -240,8 +242,13 @@ int main(int argc, char** argv)
 
         descriptorsCameraLeft.convertTo(descriptorsCameraLeft, CV_32F);
 
-        //if ( descriptorsCameraLeft.empty() )
-   		//cvError(0,"MatchFinder","1st descriptor empty",__FILE__,__LINE__);    
+	std::ofstream ofs3;
+ 	ofs3.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/NoVisiblePatternLeft.txt", std::ofstream::out | std::ofstream::trunc);
+
+        if ( descriptorsCameraLeft.empty() ) ofs3 << "1";
+	else ofs3 << "0";
+
+	ofs3.close();    
 
     // Matching descriptor vectors using FLANN matcher
 
@@ -259,8 +266,13 @@ int main(int argc, char** argv)
 	
         descriptorsCameraRight.convertTo(descriptorsCameraRight, CV_32F);
 
- 	//if ( descriptorsCameraRight.empty() )
-   		//cvError(0,"MatchFinder","2nd descriptor empty",__FILE__,__LINE__);	
+	std::ofstream ofs4;
+ 	ofs4.open ("/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master/src/NoVisiblePatternRight.txt", std::ofstream::out | std::ofstream::trunc);
+ 	
+	if ( descriptorsCameraRight.empty() ) ofs4 << "1";
+    	else ofs4 << "0";
+
+	ofs4.close();
 
     //-- Draw keypoints
   	Mat img_keypointsLeft; Mat img_keypointsRight;
