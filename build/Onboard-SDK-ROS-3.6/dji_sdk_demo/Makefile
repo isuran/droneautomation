@@ -56,17 +56,15 @@ CMAKE_BINARY_DIR = /home/ivica/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -79,6 +77,18 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -89,16 +99,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -166,34 +166,64 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
-.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-demo_landing: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
+dji_sdk_demo_generate_messages_cpp: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/rule
 
-.PHONY : demo_landing
+.PHONY : dji_sdk_demo_generate_messages_cpp
 
 # fast build rule for target.
-demo_landing/fast:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build
-.PHONY : demo_landing/fast
+dji_sdk_demo_generate_messages_cpp/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/build
+.PHONY : dji_sdk_demo_generate_messages_cpp/fast
 
 # Convenience name for target.
-Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
-.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/rule
 
 # Convenience name for target.
-demo_camera_gimbal: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
+dji_sdk_demo_genpy: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/rule
 
-.PHONY : demo_camera_gimbal
+.PHONY : dji_sdk_demo_genpy
 
 # fast build rule for target.
-demo_camera_gimbal/fast:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/build
-.PHONY : demo_camera_gimbal/fast
+dji_sdk_demo_genpy/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/build
+.PHONY : dji_sdk_demo_genpy/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_generate_messages_nodejs: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/rule
+
+.PHONY : dji_sdk_demo_generate_messages_nodejs
+
+# fast build rule for target.
+dji_sdk_demo_generate_messages_nodejs/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/build
+.PHONY : dji_sdk_demo_generate_messages_nodejs/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_generate_messages_lisp: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/rule
+
+.PHONY : dji_sdk_demo_generate_messages_lisp
+
+# fast build rule for target.
+dji_sdk_demo_generate_messages_lisp/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/build
+.PHONY : dji_sdk_demo_generate_messages_lisp/fast
 
 # Convenience name for target.
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mobile_comm.dir/rule:
@@ -211,6 +241,141 @@ demo_mobile_comm/fast:
 .PHONY : demo_mobile_comm/fast
 
 # Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_generate_messages_eus: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/rule
+
+.PHONY : dji_sdk_demo_generate_messages_eus
+
+# fast build rule for target.
+dji_sdk_demo_generate_messages_eus/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/build
+.PHONY : dji_sdk_demo_generate_messages_eus/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/rule
+
+# Convenience name for target.
+_dji_sdk_demo_generate_messages_check_deps_LandinData: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/rule
+
+.PHONY : _dji_sdk_demo_generate_messages_check_deps_LandinData
+
+# fast build rule for target.
+_dji_sdk_demo_generate_messages_check_deps_LandinData/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/build
+.PHONY : _dji_sdk_demo_generate_messages_check_deps_LandinData/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_generate_messages: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/rule
+
+.PHONY : dji_sdk_demo_generate_messages
+
+# fast build rule for target.
+dji_sdk_demo_generate_messages/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/build
+.PHONY : dji_sdk_demo_generate_messages/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
+
+# Convenience name for target.
+demo_flight_control: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
+
+.PHONY : demo_flight_control
+
+# fast build rule for target.
+demo_flight_control/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build
+.PHONY : demo_flight_control/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_gencpp: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/rule
+
+.PHONY : dji_sdk_demo_gencpp
+
+# fast build rule for target.
+dji_sdk_demo_gencpp/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/build
+.PHONY : dji_sdk_demo_gencpp/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_genlisp: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/rule
+
+.PHONY : dji_sdk_demo_genlisp
+
+# fast build rule for target.
+dji_sdk_demo_genlisp/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/build
+.PHONY : dji_sdk_demo_genlisp/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_geneus: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/rule
+
+.PHONY : dji_sdk_demo_geneus
+
+# fast build rule for target.
+dji_sdk_demo_geneus/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/build
+.PHONY : dji_sdk_demo_geneus/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
+
+# Convenience name for target.
+demo_camera_gimbal: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/rule
+
+.PHONY : demo_camera_gimbal
+
+# fast build rule for target.
+demo_camera_gimbal/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_camera_gimbal.dir/build
+.PHONY : demo_camera_gimbal/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_generate_messages_py: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/rule
+
+.PHONY : dji_sdk_demo_generate_messages_py
+
+# fast build rule for target.
+dji_sdk_demo_generate_messages_py/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/build
+.PHONY : dji_sdk_demo_generate_messages_py/fast
+
+# Convenience name for target.
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/rule:
 	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/rule
 .PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/rule
@@ -224,21 +389,6 @@ demo_mfio: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/rule
 demo_mfio/fast:
 	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mfio.dir/build
 .PHONY : demo_mfio/fast
-
-# Convenience name for target.
-Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
-.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
-
-# Convenience name for target.
-demo_local_position_control: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
-
-.PHONY : demo_local_position_control
-
-# fast build rule for target.
-demo_local_position_control/fast:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/build
-.PHONY : demo_local_position_control/fast
 
 # Convenience name for target.
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mission.dir/rule:
@@ -256,19 +406,49 @@ demo_mission/fast:
 .PHONY : demo_mission/fast
 
 # Convenience name for target.
-Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
-.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
 
 # Convenience name for target.
-demo_flight_control: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/rule
+demo_local_position_control: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/rule
 
-.PHONY : demo_flight_control
+.PHONY : demo_local_position_control
 
 # fast build rule for target.
-demo_flight_control/fast:
-	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build
-.PHONY : demo_flight_control/fast
+demo_local_position_control/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_local_position_control.dir/build
+.PHONY : demo_local_position_control/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
+
+# Convenience name for target.
+demo_landing: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/rule
+
+.PHONY : demo_landing
+
+# fast build rule for target.
+demo_landing/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build
+.PHONY : demo_landing/fast
+
+# Convenience name for target.
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/rule:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/rule
+.PHONY : Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/rule
+
+# Convenience name for target.
+dji_sdk_demo_gennodejs: Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/rule
+
+.PHONY : dji_sdk_demo_gennodejs
+
+# fast build rule for target.
+dji_sdk_demo_gennodejs/fast:
+	cd /home/ivica/catkin_ws/build && $(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/build
+.PHONY : dji_sdk_demo_gennodejs/fast
 
 src/demo_camera_gimbal.o: src/demo_camera_gimbal.cpp.o
 
@@ -465,17 +645,29 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... demo_landing"
-	@echo "... demo_camera_gimbal"
-	@echo "... demo_mobile_comm"
-	@echo "... demo_mfio"
-	@echo "... demo_local_position_control"
-	@echo "... demo_mission"
-	@echo "... demo_flight_control"
 	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... dji_sdk_demo_generate_messages_cpp"
+	@echo "... dji_sdk_demo_genpy"
+	@echo "... dji_sdk_demo_generate_messages_nodejs"
+	@echo "... dji_sdk_demo_generate_messages_lisp"
+	@echo "... install"
+	@echo "... demo_mobile_comm"
+	@echo "... dji_sdk_demo_generate_messages_eus"
+	@echo "... _dji_sdk_demo_generate_messages_check_deps_LandinData"
+	@echo "... dji_sdk_demo_generate_messages"
+	@echo "... demo_flight_control"
+	@echo "... dji_sdk_demo_gencpp"
+	@echo "... dji_sdk_demo_genlisp"
+	@echo "... dji_sdk_demo_geneus"
+	@echo "... demo_camera_gimbal"
+	@echo "... dji_sdk_demo_generate_messages_py"
+	@echo "... demo_mfio"
+	@echo "... edit_cache"
+	@echo "... demo_mission"
+	@echo "... demo_local_position_control"
+	@echo "... demo_landing"
+	@echo "... dji_sdk_demo_gennodejs"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... test"

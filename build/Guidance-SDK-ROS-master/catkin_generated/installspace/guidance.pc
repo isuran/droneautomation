@@ -3,6 +3,6 @@ prefix=/home/ivica/catkin_ws/install
 Name: guidance
 Description: Description of guidance
 Version: 0.0.1
-Cflags: 
+Cflags: -I/home/ivica/catkin_ws/install/include
 Libs: -L/home/ivica/catkin_ws/install/lib 
-Requires: cv_bridge image_transport message_runtime sensor_msgs
+Requires: cv_bridge image_transport message_runtime sensor_msgs geometry_msgs roscpp

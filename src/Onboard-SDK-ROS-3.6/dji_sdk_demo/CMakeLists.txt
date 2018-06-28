@@ -18,6 +18,18 @@ find_package(catkin REQUIRED COMPONENTS
   	message_generation
         )
 
+add_message_files(
+  FILES
+  LandinData.msg
+#   Message2.msg
+)
+
+
+## Generate added messages and services with any dependencies listed here
+ generate_messages(
+   DEPENDENCIES
+   geometry_msgs  # Or other packages containing msgs
+ )
 catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_msgs)
 
 find_package(DJIOSDK REQUIRED)
@@ -105,6 +117,10 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 #   Message2.msg
 # )
 
+
+## Generate messages in the 'msg' folder
+
+
 ## Generate services in the 'srv' folder
 # add_service_files(
 #   FILES
@@ -119,11 +135,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 #   Action2.action
 # )
 
-## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##

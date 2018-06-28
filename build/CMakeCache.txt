@@ -448,6 +448,8 @@ dji_sdk_SOURCE_DIR:STATIC=/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk
 //Value Computed by CMake
 dji_sdk_demo_BINARY_DIR:STATIC=/home/ivica/catkin_ws/build/Onboard-SDK-ROS-3.6/dji_sdk_demo
 
+dji_sdk_demo_DIR:PATH=
+
 //Value Computed by CMake
 dji_sdk_demo_SOURCE_DIR:STATIC=/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo
 
@@ -514,6 +516,8 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Value Computed by CMake
 guidance_BINARY_DIR:STATIC=/home/ivica/catkin_ws/build/Guidance-SDK-ROS-master
+
+guidance_DIR:PATH=
 
 //Value Computed by CMake
 guidance_SOURCE_DIR:STATIC=/home/ivica/catkin_ws/src/Guidance-SDK-ROS-master

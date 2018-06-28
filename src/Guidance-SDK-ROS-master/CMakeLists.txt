@@ -4,7 +4,6 @@ project(guidance)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   cv_bridge
-  std_msgs
   sensor_msgs
   geometry_msgs
   image_transport 
@@ -12,8 +11,21 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package(OpenCV)
 
+## Generate messages in the 'msg' folder
+add_message_files(
+  FILES
+  LandinData.msg
+#   Message2.msg
+)
 
-catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_msgs)
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+   DEPENDENCIES
+   geometry_msgs  # Or other packages containing msgs
+ )
+
+catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_msgs geometry_msgs roscpp)
+
 
 include_directories(
   ${OpenCV_INCLUDE_DIRS}
@@ -46,6 +58,8 @@ link_libraries(
   DJI_guidance
   usb-1.0
   yaml-cpp)
+
+
 
 add_executable(guidanceNode
   src/GuidanceNode.cpp

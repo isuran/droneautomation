@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11
 
 CXX_DEFINES = -DOPEN_CV_INSTALLED -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"dji_sdk_demo\"
 
-CXX_INCLUDES = -I/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/include -I/home/ivica/catkin_ws/devel/include -I/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/include -I/home/ivica/catkin_ws/src/vision_opencv-kinetic/cv_bridge/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv 
+CXX_INCLUDES = -I/home/ivica/catkin_ws/devel/include -I/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/include -I/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/include -I/home/ivica/catkin_ws/src/vision_opencv-kinetic/cv_bridge/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv 
 

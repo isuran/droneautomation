@@ -317,8 +317,11 @@ Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cp
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/sensor_msgs/TimeReference.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/sensor_msgs/image_encodings.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Float32.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Float32MultiArray.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Int16.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/MultiArrayDimension.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/MultiArrayLayout.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/String.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/UInt8.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/tf/LinearMath/Matrix3x3.h

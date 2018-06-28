@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(guidance_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "/home/ivica/catkin_ws/devel/include " STREQUAL " ")
   set(guidance_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/ivica/catkin_ws/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -152,7 +152,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(guidance_EXPORTED_TARGETS "")
+set(guidance_EXPORTED_TARGETS "guidance_generate_messages_cpp;guidance_generate_messages_eus;guidance_generate_messages_lisp;guidance_generate_messages_nodejs;guidance_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${guidance_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -160,7 +160,7 @@ foreach(t ${guidance_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "cv_bridge;image_transport;message_runtime;sensor_msgs")
+set(depends "cv_bridge;image_transport;message_runtime;sensor_msgs;geometry_msgs;roscpp")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -189,7 +189,7 @@ foreach(depend ${depends})
   list(APPEND guidance_EXPORTED_TARGETS ${${guidance_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "guidance-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${guidance_DIR}/${extra})

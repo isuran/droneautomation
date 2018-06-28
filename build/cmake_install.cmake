@@ -121,9 +121,9 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ivica/catkin_ws/build/vision_opencv-kinetic/image_geometry/cmake_install.cmake")
   include("/home/ivica/catkin_ws/build/vision_opencv-kinetic/vision_opencv/cmake_install.cmake")
   include("/home/ivica/catkin_ws/build/vision_opencv-kinetic/cv_bridge/cmake_install.cmake")
-  include("/home/ivica/catkin_ws/build/Guidance-SDK-ROS-master/cmake_install.cmake")
   include("/home/ivica/catkin_ws/build/Onboard-SDK-ROS-3.6/dji_sdk/cmake_install.cmake")
   include("/home/ivica/catkin_ws/build/Onboard-SDK-ROS-3.6/dji_sdk_demo/cmake_install.cmake")
+  include("/home/ivica/catkin_ws/build/Guidance-SDK-ROS-master/cmake_install.cmake")
 
 endif()
 

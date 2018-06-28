@@ -3,6 +3,6 @@ prefix=/home/ivica/catkin_ws/devel
 Name: dji_sdk_demo
 Description: Description of dji_sdk_demo
 Version: 0.1.9
-Cflags: 
+Cflags: -I/home/ivica/catkin_ws/devel/include
 Libs: -L/home/ivica/catkin_ws/devel/lib 
 Requires: 
