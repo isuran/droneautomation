@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_MobileData.py"
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_Waypoint.py"
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_MissionWaypointAction.py"
+  "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_LandingData.py"
+  "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_LandingActivation.py"
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_MissionHotpointTask.py"
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_MissionWaypoint.py"
   "/home/ivica/catkin_ws/devel/lib/python2.7/dist-packages/dji_sdk/msg/_MissionWaypointTask.py"

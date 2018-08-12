@@ -30,6 +30,7 @@ catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_m
 include_directories(
   ${OpenCV_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
+  ${DJIOSDK_INCLUDE_DIRS}
   include
 )
 

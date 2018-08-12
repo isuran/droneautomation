@@ -14,6 +14,8 @@ Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cp
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/DroneTaskControlRequest.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/DroneTaskControlResponse.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/Gimbal.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/LandingActivation.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/LandingData.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfig.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfigRequest.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfigResponse.h
@@ -316,6 +318,7 @@ Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cp
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/sensor_msgs/RegionOfInterest.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/sensor_msgs/TimeReference.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/sensor_msgs/image_encodings.h
+Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Bool.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Float32.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Float32MultiArray.h
 Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h

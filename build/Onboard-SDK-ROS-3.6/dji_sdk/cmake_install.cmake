@@ -46,6 +46,8 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/msg/MissionWaypoint.msg"
     "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/msg/MissionWaypointTask.msg"
     "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/msg/MissionHotpointTask.msg"
+    "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/msg/LandingData.msg"
+    "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/msg/LandingActivation.msg"
     )
 endif()
 

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/MobileData.js"
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/Waypoint.js"
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/MissionWaypointAction.js"
+  "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/LandingData.js"
+  "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/LandingActivation.js"
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/MissionHotpointTask.js"
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/MissionWaypoint.js"
   "/home/ivica/catkin_ws/devel/share/gennodejs/ros/dji_sdk/msg/MissionWaypointTask.js"

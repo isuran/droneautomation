@@ -18,19 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
   	message_generation
         )
 
-add_message_files(
-  FILES
-  LandinData.msg
-#   Message2.msg
-)
 
-
-## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   geometry_msgs  # Or other packages containing msgs
- )
-catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_msgs)
+catkin_package(CATKIN_DEPENDS cv_bridge image_transport message_runtime sensor_msgs )
 
 find_package(DJIOSDK REQUIRED)
 
@@ -167,10 +156,10 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-        #  INCLUDE_DIRS include
-        #  LIBRARIES dji_sdk_demo
-        #  CATKIN_DEPENDS dji_sdk roscpp
-        #  DEPENDS dji_sdk
+          #INCLUDE_DIRS include
+          #LIBRARIES dji_sdk_demo
+          #CATKIN_DEPENDS message_runtime
+          #DEPENDS dji_sdk
 )
 
 ###########

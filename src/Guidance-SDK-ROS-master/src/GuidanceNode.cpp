@@ -253,6 +253,8 @@ int main(int argc, char** argv)
     obstacle_distance_pub	= my_node.advertise<sensor_msgs::LaserScan>("/guidance/obstacle_distance",1);
     ultrasonic_pub			= my_node.advertise<sensor_msgs::LaserScan>("/guidance/ultrasonic",1);
 
+    ros::Duration(10.0).sleep();
+
     /* initialize guidance */
     reset_config();
     int err_code = init_transfer();

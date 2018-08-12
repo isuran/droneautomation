@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MobileData.lisp"
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/Waypoint.lisp"
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypointAction.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/LandingData.lisp"
+  "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/LandingActivation.lisp"
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionHotpointTask.lisp"
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypoint.lisp"
   "/home/ivica/catkin_ws/devel/share/common-lisp/ros/dji_sdk/msg/MissionWaypointTask.lisp"

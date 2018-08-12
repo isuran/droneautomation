@@ -13,6 +13,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
 )
+
+catkin_python_setup()
+
+
 find_package(DJIOSDK REQUIRED)
 
 ## System dependencies are found with CMake's conventions
@@ -22,7 +26,9 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-catkin_python_setup()
+
+
+
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -59,6 +65,8 @@ add_message_files(
   MissionWaypoint.msg
   MissionWaypointTask.msg
   MissionHotpointTask.msg
+  LandingData.msg
+  LandingActivation.msg
 )
 
 ## Generate services in the 'srv' folder

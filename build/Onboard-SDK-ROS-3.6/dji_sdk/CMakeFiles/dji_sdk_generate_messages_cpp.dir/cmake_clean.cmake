@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ivica/catkin_ws/devel/include/dji_sdk/MobileData.h"
   "/home/ivica/catkin_ws/devel/include/dji_sdk/Waypoint.h"
   "/home/ivica/catkin_ws/devel/include/dji_sdk/MissionWaypointAction.h"
+  "/home/ivica/catkin_ws/devel/include/dji_sdk/LandingData.h"
+  "/home/ivica/catkin_ws/devel/include/dji_sdk/LandingActivation.h"
   "/home/ivica/catkin_ws/devel/include/dji_sdk/MissionHotpointTask.h"
   "/home/ivica/catkin_ws/devel/include/dji_sdk/MissionWaypoint.h"
   "/home/ivica/catkin_ws/devel/include/dji_sdk/MissionWaypointTask.h"

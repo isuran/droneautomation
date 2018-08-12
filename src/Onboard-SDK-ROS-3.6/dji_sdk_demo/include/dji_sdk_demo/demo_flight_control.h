@@ -25,6 +25,14 @@
 #include <dji_sdk/QueryDroneVersion.h>
 #include <dji_sdk/SetLocalPosRef.h>
 
+#include "std_msgs/Float32MultiArray.h"
+#include "std_msgs/Bool.h"
+#include "dji_sdk/LandingData.h"
+
+#include <geometry_msgs/TransformStamped.h> //IMU
+#include <geometry_msgs/Vector3Stamped.h> //velocity
+#include <sensor_msgs/LaserScan.h> //obstacle distance && ultrasonic
+
 
 #include <tf/tf.h>
 #include <sensor_msgs/Joy.h>
@@ -99,6 +107,10 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg);
 void attitude_callback(const geometry_msgs::QuaternionStamped::ConstPtr& msg);
 
 void local_position_callback(const geometry_msgs::PointStamped::ConstPtr& msg);
+
+void landing_data_callback(const dji_sdk::LandingData::ConstPtr& msg);
+
+void obstacle_distance_callback(const sensor_msgs::LaserScan& g_oa);
 
 bool takeoff_land(int task);
 

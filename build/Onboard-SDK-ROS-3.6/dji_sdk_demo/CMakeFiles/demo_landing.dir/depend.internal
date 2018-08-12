@@ -15,6 +15,8 @@ Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cp
  /home/ivica/catkin_ws/devel/include/dji_sdk/DroneTaskControlRequest.h
  /home/ivica/catkin_ws/devel/include/dji_sdk/DroneTaskControlResponse.h
  /home/ivica/catkin_ws/devel/include/dji_sdk/Gimbal.h
+ /home/ivica/catkin_ws/devel/include/dji_sdk/LandingActivation.h
+ /home/ivica/catkin_ws/devel/include/dji_sdk/LandingData.h
  /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfig.h
  /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfigRequest.h
  /home/ivica/catkin_ws/devel/include/dji_sdk/MFIOConfigResponse.h
@@ -317,6 +319,7 @@ Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/src/demo_landing.cp
  /opt/ros/kinetic/include/sensor_msgs/RegionOfInterest.h
  /opt/ros/kinetic/include/sensor_msgs/TimeReference.h
  /opt/ros/kinetic/include/sensor_msgs/image_encodings.h
+ /opt/ros/kinetic/include/std_msgs/Bool.h
  /opt/ros/kinetic/include/std_msgs/Float32.h
  /opt/ros/kinetic/include/std_msgs/Float32MultiArray.h
  /opt/ros/kinetic/include/std_msgs/Header.h

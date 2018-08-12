@@ -18,8 +18,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/ivica/catkin_ws/devel/include"
   "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk_demo/include"
+  "/home/ivica/catkin_ws/devel/include"
   "/home/ivica/catkin_ws/src/Onboard-SDK-ROS-3.6/dji_sdk/include"
   "/home/ivica/catkin_ws/src/vision_opencv-kinetic/cv_bridge/include"
   "/opt/ros/kinetic/include"

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/MobileData.l"
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/Waypoint.l"
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/MissionWaypointAction.l"
+  "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/LandingData.l"
+  "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/LandingActivation.l"
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/MissionHotpointTask.l"
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/MissionWaypoint.l"
   "/home/ivica/catkin_ws/devel/share/roseus/ros/dji_sdk/msg/MissionWaypointTask.l"

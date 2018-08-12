@@ -998,6 +998,19 @@ _dji_sdk_generate_messages_check_deps_MissionWaypointAction/fast:
 .PHONY : _dji_sdk_generate_messages_check_deps_MissionWaypointAction/fast
 
 #=============================================================================
+# Target rules for targets named _dji_sdk_generate_messages_check_deps_LandingData
+
+# Build rule for target.
+_dji_sdk_generate_messages_check_deps_LandingData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _dji_sdk_generate_messages_check_deps_LandingData
+.PHONY : _dji_sdk_generate_messages_check_deps_LandingData
+
+# fast build rule for target.
+_dji_sdk_generate_messages_check_deps_LandingData/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_LandingData.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_LandingData.dir/build
+.PHONY : _dji_sdk_generate_messages_check_deps_LandingData/fast
+
+#=============================================================================
 # Target rules for targets named _dji_sdk_generate_messages_check_deps_MissionWpSetSpeed
 
 # Build rule for target.
@@ -1022,6 +1035,19 @@ _dji_sdk_generate_messages_check_deps_SetHardSync: cmake_check_build_system
 _dji_sdk_generate_messages_check_deps_SetHardSync/fast:
 	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_SetHardSync.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_SetHardSync.dir/build
 .PHONY : _dji_sdk_generate_messages_check_deps_SetHardSync/fast
+
+#=============================================================================
+# Target rules for targets named _dji_sdk_generate_messages_check_deps_MissionHpUpload
+
+# Build rule for target.
+_dji_sdk_generate_messages_check_deps_MissionHpUpload: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _dji_sdk_generate_messages_check_deps_MissionHpUpload
+.PHONY : _dji_sdk_generate_messages_check_deps_MissionHpUpload
+
+# fast build rule for target.
+_dji_sdk_generate_messages_check_deps_MissionHpUpload/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_MissionHpUpload.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_MissionHpUpload.dir/build
+.PHONY : _dji_sdk_generate_messages_check_deps_MissionHpUpload/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_py
@@ -1191,6 +1217,19 @@ rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
 rosgraph_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named _dji_sdk_generate_messages_check_deps_LandingActivation
+
+# Build rule for target.
+_dji_sdk_generate_messages_check_deps_LandingActivation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _dji_sdk_generate_messages_check_deps_LandingActivation
+.PHONY : _dji_sdk_generate_messages_check_deps_LandingActivation
+
+# fast build rule for target.
+_dji_sdk_generate_messages_check_deps_LandingActivation/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_LandingActivation.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_LandingActivation.dir/build
+.PHONY : _dji_sdk_generate_messages_check_deps_LandingActivation/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_eus
@@ -1544,19 +1583,6 @@ _dji_sdk_generate_messages_check_deps_Waypoint/fast:
 .PHONY : _dji_sdk_generate_messages_check_deps_Waypoint/fast
 
 #=============================================================================
-# Target rules for targets named _dji_sdk_generate_messages_check_deps_MissionHpUpload
-
-# Build rule for target.
-_dji_sdk_generate_messages_check_deps_MissionHpUpload: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _dji_sdk_generate_messages_check_deps_MissionHpUpload
-.PHONY : _dji_sdk_generate_messages_check_deps_MissionHpUpload
-
-# fast build rule for target.
-_dji_sdk_generate_messages_check_deps_MissionHpUpload/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_MissionHpUpload.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk/CMakeFiles/_dji_sdk_generate_messages_check_deps_MissionHpUpload.dir/build
-.PHONY : _dji_sdk_generate_messages_check_deps_MissionHpUpload/fast
-
-#=============================================================================
 # Target rules for targets named _dji_sdk_generate_messages_check_deps_MFIOSetValue
 
 # Build rule for target.
@@ -1765,160 +1791,17 @@ _dji_sdk_generate_messages_check_deps_MissionStatus/fast:
 .PHONY : _dji_sdk_generate_messages_check_deps_MissionStatus/fast
 
 #=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages_cpp
+# Target rules for targets named demo_landing
 
 # Build rule for target.
-dji_sdk_demo_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages_cpp
-.PHONY : dji_sdk_demo_generate_messages_cpp
+demo_landing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 demo_landing
+.PHONY : demo_landing
 
 # fast build rule for target.
-dji_sdk_demo_generate_messages_cpp/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_cpp.dir/build
-.PHONY : dji_sdk_demo_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_genpy
-
-# Build rule for target.
-dji_sdk_demo_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_genpy
-.PHONY : dji_sdk_demo_genpy
-
-# fast build rule for target.
-dji_sdk_demo_genpy/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genpy.dir/build
-.PHONY : dji_sdk_demo_genpy/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages_nodejs
-
-# Build rule for target.
-dji_sdk_demo_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages_nodejs
-.PHONY : dji_sdk_demo_generate_messages_nodejs
-
-# fast build rule for target.
-dji_sdk_demo_generate_messages_nodejs/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_nodejs.dir/build
-.PHONY : dji_sdk_demo_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages_lisp
-
-# Build rule for target.
-dji_sdk_demo_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages_lisp
-.PHONY : dji_sdk_demo_generate_messages_lisp
-
-# fast build rule for target.
-dji_sdk_demo_generate_messages_lisp/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_lisp.dir/build
-.PHONY : dji_sdk_demo_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named demo_mobile_comm
-
-# Build rule for target.
-demo_mobile_comm: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 demo_mobile_comm
-.PHONY : demo_mobile_comm
-
-# fast build rule for target.
-demo_mobile_comm/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mobile_comm.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mobile_comm.dir/build
-.PHONY : demo_mobile_comm/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages_eus
-
-# Build rule for target.
-dji_sdk_demo_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages_eus
-.PHONY : dji_sdk_demo_generate_messages_eus
-
-# fast build rule for target.
-dji_sdk_demo_generate_messages_eus/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_eus.dir/build
-.PHONY : dji_sdk_demo_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named _dji_sdk_demo_generate_messages_check_deps_LandinData
-
-# Build rule for target.
-_dji_sdk_demo_generate_messages_check_deps_LandinData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _dji_sdk_demo_generate_messages_check_deps_LandinData
-.PHONY : _dji_sdk_demo_generate_messages_check_deps_LandinData
-
-# fast build rule for target.
-_dji_sdk_demo_generate_messages_check_deps_LandinData/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/_dji_sdk_demo_generate_messages_check_deps_LandinData.dir/build
-.PHONY : _dji_sdk_demo_generate_messages_check_deps_LandinData/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages
-
-# Build rule for target.
-dji_sdk_demo_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages
-.PHONY : dji_sdk_demo_generate_messages
-
-# fast build rule for target.
-dji_sdk_demo_generate_messages/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages.dir/build
-.PHONY : dji_sdk_demo_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named demo_flight_control
-
-# Build rule for target.
-demo_flight_control: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 demo_flight_control
-.PHONY : demo_flight_control
-
-# fast build rule for target.
-demo_flight_control/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build
-.PHONY : demo_flight_control/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_gencpp
-
-# Build rule for target.
-dji_sdk_demo_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_gencpp
-.PHONY : dji_sdk_demo_gencpp
-
-# fast build rule for target.
-dji_sdk_demo_gencpp/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gencpp.dir/build
-.PHONY : dji_sdk_demo_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_genlisp
-
-# Build rule for target.
-dji_sdk_demo_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_genlisp
-.PHONY : dji_sdk_demo_genlisp
-
-# fast build rule for target.
-dji_sdk_demo_genlisp/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_genlisp.dir/build
-.PHONY : dji_sdk_demo_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named dji_sdk_demo_geneus
-
-# Build rule for target.
-dji_sdk_demo_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_geneus
-.PHONY : dji_sdk_demo_geneus
-
-# fast build rule for target.
-dji_sdk_demo_geneus/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_geneus.dir/build
-.PHONY : dji_sdk_demo_geneus/fast
+demo_landing/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build
+.PHONY : demo_landing/fast
 
 #=============================================================================
 # Target rules for targets named demo_camera_gimbal
@@ -1934,17 +1817,17 @@ demo_camera_gimbal/fast:
 .PHONY : demo_camera_gimbal/fast
 
 #=============================================================================
-# Target rules for targets named dji_sdk_demo_generate_messages_py
+# Target rules for targets named demo_mobile_comm
 
 # Build rule for target.
-dji_sdk_demo_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_generate_messages_py
-.PHONY : dji_sdk_demo_generate_messages_py
+demo_mobile_comm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 demo_mobile_comm
+.PHONY : demo_mobile_comm
 
 # fast build rule for target.
-dji_sdk_demo_generate_messages_py/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_generate_messages_py.dir/build
-.PHONY : dji_sdk_demo_generate_messages_py/fast
+demo_mobile_comm/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mobile_comm.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mobile_comm.dir/build
+.PHONY : demo_mobile_comm/fast
 
 #=============================================================================
 # Target rules for targets named demo_mfio
@@ -1960,19 +1843,6 @@ demo_mfio/fast:
 .PHONY : demo_mfio/fast
 
 #=============================================================================
-# Target rules for targets named demo_mission
-
-# Build rule for target.
-demo_mission: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 demo_mission
-.PHONY : demo_mission
-
-# fast build rule for target.
-demo_mission/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mission.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mission.dir/build
-.PHONY : demo_mission/fast
-
-#=============================================================================
 # Target rules for targets named demo_local_position_control
 
 # Build rule for target.
@@ -1986,30 +1856,30 @@ demo_local_position_control/fast:
 .PHONY : demo_local_position_control/fast
 
 #=============================================================================
-# Target rules for targets named demo_landing
+# Target rules for targets named demo_mission
 
 # Build rule for target.
-demo_landing: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 demo_landing
-.PHONY : demo_landing
+demo_mission: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 demo_mission
+.PHONY : demo_mission
 
 # fast build rule for target.
-demo_landing/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_landing.dir/build
-.PHONY : demo_landing/fast
+demo_mission/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mission.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_mission.dir/build
+.PHONY : demo_mission/fast
 
 #=============================================================================
-# Target rules for targets named dji_sdk_demo_gennodejs
+# Target rules for targets named demo_flight_control
 
 # Build rule for target.
-dji_sdk_demo_gennodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dji_sdk_demo_gennodejs
-.PHONY : dji_sdk_demo_gennodejs
+demo_flight_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 demo_flight_control
+.PHONY : demo_flight_control
 
 # fast build rule for target.
-dji_sdk_demo_gennodejs/fast:
-	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/dji_sdk_demo_gennodejs.dir/build
-.PHONY : dji_sdk_demo_gennodejs/fast
+demo_flight_control/fast:
+	$(MAKE) -f Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build.make Onboard-SDK-ROS-3.6/dji_sdk_demo/CMakeFiles/demo_flight_control.dir/build
+.PHONY : demo_flight_control/fast
 
 #=============================================================================
 # Target rules for targets named guidanceNodeTest
@@ -2283,8 +2153,10 @@ help:
 	@echo "... dji_sdk_generate_messages_eus"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionHpGetInfo"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionWaypointAction"
+	@echo "... _dji_sdk_generate_messages_check_deps_LandingData"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionWpSetSpeed"
 	@echo "... _dji_sdk_generate_messages_check_deps_SetHardSync"
+	@echo "... _dji_sdk_generate_messages_check_deps_MissionHpUpload"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_nodejs"
@@ -2298,6 +2170,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionWpGetInfo"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... _dji_sdk_generate_messages_check_deps_LandingActivation"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... _dji_sdk_generate_messages_check_deps_SetLocalPosRef"
@@ -2325,7 +2198,6 @@ help:
 	@echo "... _dji_sdk_generate_messages_check_deps_MobileData"
 	@echo "... _dji_sdk_generate_messages_check_deps_StereoDepthSubscription"
 	@echo "... _dji_sdk_generate_messages_check_deps_Waypoint"
-	@echo "... _dji_sdk_generate_messages_check_deps_MissionHpUpload"
 	@echo "... _dji_sdk_generate_messages_check_deps_MFIOSetValue"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionWpUpload"
 	@echo "... nav_msgs_generate_messages_lisp"
@@ -2342,25 +2214,13 @@ help:
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionHotpointTask"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionHpUpdateYawRate"
 	@echo "... _dji_sdk_generate_messages_check_deps_MissionStatus"
-	@echo "... dji_sdk_demo_generate_messages_cpp"
-	@echo "... dji_sdk_demo_genpy"
-	@echo "... dji_sdk_demo_generate_messages_nodejs"
-	@echo "... dji_sdk_demo_generate_messages_lisp"
-	@echo "... demo_mobile_comm"
-	@echo "... dji_sdk_demo_generate_messages_eus"
-	@echo "... _dji_sdk_demo_generate_messages_check_deps_LandinData"
-	@echo "... dji_sdk_demo_generate_messages"
-	@echo "... demo_flight_control"
-	@echo "... dji_sdk_demo_gencpp"
-	@echo "... dji_sdk_demo_genlisp"
-	@echo "... dji_sdk_demo_geneus"
-	@echo "... demo_camera_gimbal"
-	@echo "... dji_sdk_demo_generate_messages_py"
-	@echo "... demo_mfio"
-	@echo "... demo_mission"
-	@echo "... demo_local_position_control"
 	@echo "... demo_landing"
-	@echo "... dji_sdk_demo_gennodejs"
+	@echo "... demo_camera_gimbal"
+	@echo "... demo_mobile_comm"
+	@echo "... demo_mfio"
+	@echo "... demo_local_position_control"
+	@echo "... demo_mission"
+	@echo "... demo_flight_control"
 	@echo "... guidanceNodeTest"
 	@echo "... guidanceNode"
 	@echo "... guidance_genpy"
