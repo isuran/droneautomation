@@ -247,7 +247,7 @@ void Mission::step()
   geometry_msgs::Vector3     localOffset; // how much the position has changed
 
   float speedFactorX, speedFactorY, speedFactor; // This defines the speed 
-  if(landingActivation) speedFactor = 0.5; 
+  if(landingActivation) speedFactor = 0.1; 
   else speedFactor = 5;
   float yawThresholdInDeg   = 5;
 
@@ -301,7 +301,9 @@ void Mission::step()
   else
     yCmd = yOffsetRemaining;
  
-    zCmd = target_offset_z;
+   
+  if(landingActivation) (zOffsetRemaining>0) ? speedFactor : -1 * speedFactor; 
+  else zCmd = target_offset_z;
 
     
   
@@ -669,7 +671,7 @@ void gps_callback(const sensor_msgs::NavSatFix::ConstPtr& msg)
 		}
 
 		else {
-		ros::Duration(2.0).sleep();
+		ros::Duration(10.0).sleep();
 		ROS_INFO("Waiting for landingData");
 		}
 	}
